@@ -14,20 +14,21 @@ class LCB_InstantCheckout_IndexController extends Mage_Core_Controller_Front_Act
 
         $id = Mage::app()->getRequest()->getParam('product');
         $coupon = Mage::app()->getRequest()->getParam('coupon');
+        $params = '';
 
         if ($id) {
             $product = Mage::getModel('catalog/product')->load($id);
             $url = Mage::helper('checkout/cart')->getAddUrl($product);
 
             if ($coupon) {
-                Mage::getSingleton('checkout/cart')
-                        ->getQuote()
-                        ->setCouponCode(strlen($coupon) ? $coupon : '')
-                        ->collectTotals()
-                        ->save();
+                $params .= "coupon/$coupon/";
             }
 
-            Mage::app()->getResponse()->setRedirect($url);
+            if (Mage::getStoreConfig('instantcheckout/general/redirect') == "checkout") {
+                $params .= "gtc/1/";
+            }
+
+            Mage::app()->getResponse()->setRedirect($url . $params);
             return;
         }
 

@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<config>
+    <acl>
+        <resources>
+            <admin>
+                <children>
+                    <system>
+                        <children>
+                            <config>
+                                <children>
+                                    <instantcheckout translate="title" module="instantcheckout">
+                                        <title>Instant Checkout Section</title>
+                                        <sort_order>100</sort_order>
+                                    </instantcheckout>
+                                </children>
+                            </config>
+                        </children>
+                    </system>
+                </children>
+            </admin>
+        </resources>
+    </acl>
+</config>

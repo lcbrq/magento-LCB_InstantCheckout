@@ -15,6 +15,17 @@
                 </args>
             </instantcheckout>
         </routers>
+        <events>
+            <checkout_cart_add_product_complete>
+                <observers>
+                    <lcb_checkout_cart_add_product_complete_handler>
+                        <type>singleton</type>
+                        <class>instantcheckout/observer</class>
+                        <method>addToCartComplete</method>
+                    </lcb_checkout_cart_add_product_complete_handler>
+                </observers>
+            </checkout_cart_add_product_complete>
+        </events>
     </frontend>
     <global>
         <helpers>
@@ -27,6 +38,11 @@
                 <class>LCB_InstantCheckout_Block</class>
             </instantcheckout>
         </blocks>
+        <models>
+            <instantcheckout>
+                <class>LCB_InstantCheckout_Model</class>
+            </instantcheckout>
+        </models>
     </global>
     <default>
         <web>
